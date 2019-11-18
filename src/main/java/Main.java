@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args){
         java.util.LinkedList<String> javaLinkedList = new java.util.LinkedList<String>();
-        LinkedList<String> myLinkedList = new LinkedList<>();
+        LinkedList<String> myLinkedList = new LinkedList<String>();
 
         javaLinkedList.add("Zero");
         javaLinkedList.add("One");

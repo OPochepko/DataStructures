@@ -1,10 +1,7 @@
-import java.util.*;
-
 
 public class LinkedList<E> implements List<E>
 
 {
-
     int size = 0;
 
     Node<E> first;
@@ -27,11 +24,10 @@ public class LinkedList<E> implements List<E>
     }
 
 
-    @Override
     public boolean add(E e) {
 
         if (size == 0){
-            Node<E> node = new Node<>(e, null, null);
+            Node<E> node = new Node<E>(e, null, null);
             size++;
             first = node;
             last = node;
@@ -39,7 +35,7 @@ public class LinkedList<E> implements List<E>
         }
 
         else {
-            Node<E> node = new Node<>(e, last, null);
+            Node<E> node = new Node<E>(e, last, null);
             size++;
             last = node;
             node.previous.next = node;
@@ -58,7 +54,6 @@ public class LinkedList<E> implements List<E>
         } else return false;
     }
 
-    @Override
     public boolean remove(Object o) {
         Node<E> node = first;
         while (node != null){
@@ -75,12 +70,10 @@ public class LinkedList<E> implements List<E>
     }
 
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public E get(int index) {
         if (index < 0 || index >= size) {return null;}
         else {
@@ -97,7 +90,6 @@ public class LinkedList<E> implements List<E>
         }
     }
 
-    @Override
     public void add(int index, E element) {
         if (index >= 0 && index <= size){
             if (index == size) {
@@ -108,111 +100,11 @@ public class LinkedList<E> implements List<E>
             for (int i = 0; i < index - 1; i++) {
                 node = node.next;
             }
-            Node<E> newNode =  new Node<>(element, node,node.next);
+            Node<E> newNode =  new Node<E>(element, node,node.next);
             node.next.previous = newNode;
             node.next = newNode;
             size++;
         }
     }
-
-//----------------------------------------------------------------- TODO next
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        return false;
-    }
-
-    @Override
-    public Iterator<E> iterator() {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return new Object[0];
-    }
-
-    @Override
-    public <T> T[] toArray(T[] a) {
-        return null;
-    }
-
-
-
-
-    @Override
-    public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
-    }
-
-    @Override
-    public boolean removeAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public void clear() {
-
-    }
-
-
-
-    @Override
-    public E set(int index, E element) {
-        return null;
-    }
-
-
-
-    @Override
-    public E remove(int index) {
-        return null;
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
-
-    @Override
-    public ListIterator<E> listIterator() {
-        return null;
-    }
-
-    @Override
-    public ListIterator<E> listIterator(int index) {
-        return null;
-    }
-
-    @Override
-    public List<E> subList(int fromIndex, int toIndex) {
-        return null;
-    }
-
-
 
 }
