@@ -1,9 +1,5 @@
 import java.util.*;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+
 
 public class LinkedList<E> implements List<E>
 
@@ -46,6 +42,7 @@ public class LinkedList<E> implements List<E>
             Node<E> node = new Node<>(e, last, null);
             size++;
             last = node;
+            node.previous.next = node;
             return true;
         }
 
@@ -103,14 +100,18 @@ public class LinkedList<E> implements List<E>
     @Override
     public void add(int index, E element) {
         if (index >= 0 && index <= size){
-            if (index == size) {this.add(element);}
+            if (index == size) {
+                this.add(element);
+                return;
+            }
             Node<E> node = first;
-            for (int i = 0; i < index; i++) {
+            for (int i = 0; i < index - 1; i++) {
                 node = node.next;
             }
-            Node<E> newNode =  new Node<>(element, node.previous,node);
-            node.previous = newNode;
-            node.previous.next = newNode;
+            Node<E> newNode =  new Node<>(element, node,node.next);
+            node.next.previous = newNode;
+            node.next = newNode;
+            size++;
         }
     }
 
