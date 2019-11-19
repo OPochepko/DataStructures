@@ -8,7 +8,6 @@ import static org.junit.Assert.*;
 
 
 public class LinkedListTest {
-    private     java.util.LinkedList<String> javaLinkedList = new java.util.LinkedList<String>();
     private     LinkedList<String> myLinkedList = new LinkedList<String>();
 
 
@@ -16,40 +15,51 @@ public class LinkedListTest {
     @Before
     public void setUp(){
 
-
-        javaLinkedList.add("Zero");
-        javaLinkedList.add("One");
-        javaLinkedList.add("Two");
-        javaLinkedList.add("Three");
-        javaLinkedList.add("Four");
-
         myLinkedList.add("Zero");
         myLinkedList.add("One");
         myLinkedList.add("Two");
         myLinkedList.add("Three");
         myLinkedList.add("Four");
     }
+    @Test
+    public void get(){
+
+        Assert.assertEquals(myLinkedList.get(0),"Zero");
+
+        Assert.assertEquals(myLinkedList.get(3),"Three");
+    }
 
     @Test
     public void remove() {
-        javaLinkedList.remove("Three");
+
         myLinkedList.remove("Three");
 
-        System.out.println(javaLinkedList.get(3) + myLinkedList.get(3));
+        Assert.assertEquals(myLinkedList.get(3),"Four");
 
-        Assert.assertEquals(javaLinkedList.get(3),myLinkedList.get(3));
+        myLinkedList.remove();
+
+        Assert.assertEquals(myLinkedList.get(0), "One");
+
     }
 
 
-//    @Test
-//    public void size() {
-//    }
-//
-//    @Test
-//    public void get() {
-//    }
-//
-//    @Test
-//    public void testAdd() {
-//    }
+    @Test
+    public void size() {
+
+        Assert.assertTrue(myLinkedList.size == 5);
+
+        myLinkedList.remove("Three");
+
+        Assert.assertTrue(myLinkedList.size == 4);
+
+    }
+
+    @Test
+    public void add() {
+        myLinkedList.add(3,"Two and a half");
+
+        Assert.assertEquals(myLinkedList.get(3), "Two and a half");
+
+        Assert.assertTrue(myLinkedList.size == 6);
+    }
 }
