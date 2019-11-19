@@ -2,13 +2,11 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 
 public class LinkedListTest {
     private     LinkedList<String> myLinkedList = new LinkedList<String>();
+
 
 
 
